@@ -5,7 +5,7 @@ const deleteButton = document.getElementById("delete-btn")
 let myLeads =[]
 const myUnorderList = document.getElementById("unorderList-el")
 
-//gets the stored arrays
+//gets the stored urls 
 const leadsFromLocalStorage =JSON.parse( localStorage.getItem("myLeads"))
 if (leadsFromLocalStorage) {
 myLeads =leadsFromLocalStorage
@@ -27,7 +27,7 @@ function addLeads() {
     renderMyList(myLeads)   
 }
 
-//saves My urls
+//saving the urls
 function saveBtn() {
     chrome.tabs.query({active: true, currentWindow: true,}, function(tabs) {
     myLeads.push(tabs[0].url)
@@ -44,7 +44,7 @@ function deleteInfo() {
     renderMyList(myLeads)
 }
 
-//render out my input
+//render the input url
 function renderMyList(leads) {
     let listItems = ""
 for (let i = 0; i < leads.length; i++) {
